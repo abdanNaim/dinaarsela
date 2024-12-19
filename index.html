@@ -4,52 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oghy Wara</title>
-    <link rel="stylesheet" href="style.css" />
     <style>
-      /* Resetting some default styles */
+      /* Resetting default styles */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      /* Body styling with white background */
+      /* Body styling */
       body {
         font-family: Arial, sans-serif;
-        background-color: #ffffff; /* White background */
-        color: #333333; /* Dark gray text for better contrast */
-        display: flex;
-        flex-direction: column;
         min-height: 100vh;
+        margin: 0;
+        overflow: hidden; /* Hindari scroll akibat elemen besar */
       }
 
       /* Sidebar Navigation */
       .sidebar {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 250px;
         height: 100%;
-        background-color: #4caf50; /* Green sidebar */
+        background: rgba(0, 0, 0, 0.5); /* Transparent black */
         color: white;
         padding: 20px;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 1;
       }
 
       .sidebar h1 {
-        font-size: 1.8rem; /* Ukuran font disesuaikan dengan logo */
+        font-size: 1.8rem;
         text-align: center;
         margin-bottom: 40px;
         display: flex;
-        align-items: center; /* Menjaga logo dan teks dalam satu baris */
-        justify-content: center; /* Menjaga jarak antara logo dan teks */
+        align-items: center;
+        justify-content: center;
         color: white;
       }
 
       .sidebar h1 img {
-        width: 60px; /* Ukuran logo disesuaikan */
+        width: 60px;
         height: auto;
-        margin-right: 10px; /* Menambahkan jarak antara logo dan teks */
+        margin-right: 10px;
       }
 
       .sidebar ul {
@@ -73,25 +70,18 @@
         color: #ddd;
       }
 
-      /* Main Content */
-      .main-content {
-        margin-left: 250px;
-        padding: 40px;
-        flex-grow: 1;
-      }
-
       /* Hero Section */
       .hero {
         position: relative;
-        width: 100%;
-        max-height: 500px;
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
         overflow: hidden;
       }
 
       .hero-image {
         width: 100%;
-        height: auto;
-        object-fit: cover;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the entire area */
       }
 
       /* Welcome Message */
@@ -100,43 +90,20 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: #4caf50; /* Green text for branding */
+        color: white;
         font-size: 2.5rem;
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Subtle shadow for clarity */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         text-align: center;
-        background-color: rgba(
-          255,
-          255,
-          255,
-          0.7
-        ); /* Transparent white background */
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 20px;
         border-radius: 8px;
-      }
-
-      /* Footer Styling */
-      footer {
-        text-align: center;
-        color: #4caf50;
-        margin-top: 20px;
-      }
-
-      footer p {
-        font-size: 1rem;
+        z-index: 2;
       }
 
       /* Responsive Design */
       @media (max-width: 768px) {
         .sidebar {
           width: 200px;
-        }
-
-        .main-content {
-          margin-left: 200px;
-        }
-
-        .hero {
-          max-height: 400px;
         }
 
         .welcome-message {
@@ -151,13 +118,8 @@
           position: relative;
         }
 
-        .main-content {
-          margin-left: 0;
-          padding: 20px;
-        }
-
         .hero {
-          max-height: 300px;
+          height: 300px;
         }
 
         .welcome-message {
@@ -168,34 +130,24 @@
   </head>
   <body>
     <!-- Sidebar Navigation -->
-    <div class="sidebar">
-      <h1><img src="img/logo-oghy.png" alt="Logo Oghy Wara" /> OghyWara</h1>
-      <ul>
-        <li><a href="javascript:void(0);" onclick="stayOnPage()">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="lokasi.html">Lokasi</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-      </ul>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <div class="hero">
-        <img src="image.png" alt="Delicious food" class="hero-image" />
-        <h2 class="welcome-message">Selamat Datang di Oghy Wara</h2>
+    <div class="hero">
+      <div class="sidebar">
+        <h1><img src="img/logo-oghy.png" alt="Logo Oghy Wara" /> OghyWara</h1>
+        <ul>
+          <li><a href="javascript:void(0);" onclick="stayOnPage()">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="lokasi.html">Lokasi</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+        </ul>
       </div>
-
-      <!-- Footer -->
-      <footer>
-        <p>© 2024 Oghy Wara. Semua Hak Dilindungi.</p>
-      </footer>
+      <img src="image.png" alt="Delicious food" class="hero-image" />
+      <h2 class="welcome-message">Selamat Datang di Oghy Wara</h2>
     </div>
 
     <!-- JavaScript to handle Home click -->
     <script>
       function stayOnPage() {
-        // Mencegah perubahan halaman saat mengklik Home
         alert("Anda sudah berada di halaman yang sama!");
       }
     </script>
